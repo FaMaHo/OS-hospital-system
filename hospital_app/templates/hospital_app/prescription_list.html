@@ -1,0 +1,47 @@
+<!-- hospital_app/templates/hospital_app/prescription_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Prescriptions</h1>
+        <a href="{% url 'add_prescription' %}" class="btn btn-primary mb-3">Add New Prescription</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Back to Home</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ref #</th>
+                    <th>Patient</th>
+                    <th>Medication</th>
+                    <th>Dose</th>
+                    <th>Issue Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prescription in prescriptions %}
+                <tr>
+                    <td>{{ prescription.ref_no }}</td>
+                    <td>{{ prescription.patient.patient_name }}</td>
+                    <td>{{ prescription.name_of_tablet }}</td>
+                    <td>{{ prescription.dose }}</td>
+                    <td>{{ prescription.issue_date }}</td>
+                    <td>
+                        <a href="{% url 'update_prescription' prescription.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'delete_prescription' prescription.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">No prescriptions available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
