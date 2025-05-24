@@ -26,7 +26,7 @@ A Django-based hospital management system for managing patients and prescription
 
 1. **Clone the repository**
   ```bash
-  git clone https://github.com/FaMaHo/hospital-management-system.git
+  git clone https://github.com/FaMaHo/OS-hospital-system.git
   cd hospital-management-system
 ```
 2.  **Create and activate a virtual environment**
